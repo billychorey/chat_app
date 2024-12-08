@@ -1,0 +1,15 @@
+<h1>Edit User</h1>
+
+<%= form_with model: @user, local: true do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password, placeholder: "Leave blank to keep current password" %>
+  </div>
+  <div>
+    <%= form.submit "Update User" %>
+  </div>
+<% end %>
