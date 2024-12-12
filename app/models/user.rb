@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :messages
-
+  has_many :chat_rooms, dependent: :destroy
   has_secure_password
 
   validates :name, presence: true, uniqueness: true
@@ -10,5 +10,3 @@ class User < ApplicationRecord
     self.admin
   end
 end
-
-

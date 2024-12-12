@@ -1,15 +1,14 @@
-<h1>Edit User</h1>
+<h1>Edit Chat Room</h1>
 
-<%= form_with model: @user, local: true do |form| %>
+<%= form_with(model: @chat_room, url: chat_room_path(@chat_room), method: :patch, local: true) do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password, placeholder: "Leave blank to keep current password" %>
-  </div>
-  <div>
-    <%= form.submit "Update User" %>
-  </div>
+
+  <%= form.submit "Update Chat Room" %>
 <% end %>
+
+<%= link_to "Delete Chat Room", @chat_room, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+
+<%= link_to "Back to Chat Rooms", chat_rooms_path %>

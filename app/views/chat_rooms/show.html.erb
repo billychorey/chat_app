@@ -1,4 +1,9 @@
 <h1><%= @chat_room.name %></h1>
+<p>Created by <%= @chat_room.user.name %></p>
+
+<% if current_user&.admin? || @chat_room.user == current_user %>
+  <%= link_to "Edit Chat Room", edit_chat_room_path(@chat_room) %>
+<% end %>
 
 <h2>Messages</h2>
 <ul>
@@ -23,6 +28,5 @@
     <%= link_to "create an account", new_user_path %>.
   </p>
 <% end %>
-
 
 <%= link_to "Back to Chat Rooms", chat_rooms_path %>
