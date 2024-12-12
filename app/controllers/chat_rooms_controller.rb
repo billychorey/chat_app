@@ -1,5 +1,6 @@
 class ChatRoomsController < ApplicationController
-  before_action :require_login, except: [:index, :show]
+  before_action :require_login, only: [:edit, :update, :destroy]
+
   before_action :set_chat_room, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
@@ -34,10 +35,12 @@ class ChatRoomsController < ApplicationController
     end
   end
 
-  def destroy
-    @chat_room.destroy
-    redirect_to chat_rooms_path, notice: "Chat room deleted successfully."
-  end
+def destroy
+  @chat_room = ChatRoom.find(params[:id])
+  @chat_room.destroy
+  redirect_to chat_rooms_path, notice: "Chat room deleted successfully."
+end
+
 
   private
 

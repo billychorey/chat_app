@@ -3,7 +3,11 @@
     <div id="react-root">
       <div id="nav-root"></div>
     </div>
+    <% if logged_in? %>
+      <%= link_to "Log Out", logout_path, method: :delete %>
+    <% end %>
   </header>
+
   <h1>Chat Rooms</h1>
   <main>
     <% if logged_in? %>

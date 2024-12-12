@@ -1,21 +1,21 @@
+# app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
   def new
-    # Render login form
   end
 
   def create
-    user = User.find_by(name: params[:name])
+    user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Logged in successfully."
+      redirect_to root_path, notice: "Logged in!"
     else
-      flash.now[:alert] = "Invalid name or password."
-      render :new, status: :unprocessable_entity
+      flash.now[:alert] = "Invalid email or password"
+      render :new
     end
   end
 
   def destroy
-    reset_session # Clear the session
-    redirect_to root_path, notice: "Logged out successfully."
+    session[:user_id] = nil
+    redirect_to root_path, notice: "Logged out!"
   end
 end
