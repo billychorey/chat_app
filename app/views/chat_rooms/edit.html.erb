@@ -1,14 +1,23 @@
-<h1>Edit Chat Room</h1>
 
-<%= form_with(model: @chat_room, url: chat_room_path(@chat_room), method: :patch, local: true) do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<header>
+      <div id="react-root">
+          <div id="nav-root"></div>
+      </div>
+</header>
+<main>
+  <h1>Edit Chat Room</h1>
 
-  <%= form.submit "Update Chat Room" %>
-<% end %>
+  <%= form_with(model: @chat_room, url: chat_room_path(@chat_room), method: :patch, local: true) do |form| %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
 
-<%= link_to "Delete Chat Room", @chat_room, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    <%= form.submit "Update Chat Room" %>
+  <% end %>
 
-<%= link_to "Back to Chat Rooms", chat_rooms_path %>
+  <%= link_to "Delete Chat Room", @chat_room, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+
+  <%= link_to "Back to Chat Rooms", chat_rooms_path %>
+
+</main>

@@ -1,17 +1,25 @@
-<h1>Chat Rooms</h1>
+<body data-logged-in="<%= logged_in? %>">
+  <header>
+    <div id="react-root">
+      <div id="nav-root"></div>
+    </div>
+  </header>
+  <h1>Chat Rooms</h1>
+  <main>
+    <% if logged_in? %>
+      <%= link_to "Create New Chat Room", new_chat_room_path %>
+    <% end %>
 
-<% if logged_in? %>
-  <%= link_to "Create New Chat Room", new_chat_room_path %>
-<% end %>
-
-<ul>
-  <% @chat_rooms.each do |chat_room| %>
-    <li>
-      <%= link_to chat_room.name, chat_room_path(chat_room) %>
-      - Created by <%= chat_room.user.name %>
-      <% if current_user&.admin? || chat_room.user == current_user %>
-        <%= link_to "Edit", edit_chat_room_path(chat_room) %>
+    <ul>
+      <% @chat_rooms.each do |chat_room| %>
+        <li>
+          <%= link_to chat_room.name, chat_room_path(chat_room) %>
+          - Created by <%= chat_room.user.name %>
+          <% if current_user&.admin? || chat_room.user == current_user %>
+            <%= link_to "Edit", edit_chat_room_path(chat_room) %>
+          <% end %>
+        </li>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    </ul>
+  </main>
+</body>

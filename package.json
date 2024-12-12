@@ -1,0 +1,24 @@
+{
+  "name": "chat_app",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "babel.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node esbuild.config.js",
+    "build:watch": "node esbuild.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billychorey/chat_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/billychorey/chat_app/issues"
+  },
+  "homepage": "https://github.com/billychorey/chat_app#readme",
+  "devDependencies": {
+    "esbuild": "^0.18.10"
+  }
+}
