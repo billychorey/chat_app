@@ -16,15 +16,15 @@ class UsersController < ApplicationController
   end
 
   # Create a new user
-    def create
+  def create
     @user = User.new(user_params)
     if @user.save
-        redirect_to users_path, notice: "User created successfully."
+      redirect_to root_path, notice: "User created successfully."
     else
-        flash.now[:alert] = "There was an error creating the user."
-        render :new, status: :unprocessable_entity
+      flash.now[:alert] = "There were errors with your submission."
+      render :new, status: :unprocessable_entity # Re-renders the form with status 422
     end
-    end
+  end
 
 
   # Form for editing a user
@@ -62,6 +62,6 @@ class UsersController < ApplicationController
 
   # Strong parameters for user creation and updates
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

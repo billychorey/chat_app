@@ -1,19 +1,38 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-# Create users
-alice = User.create(name: "Alice")
-bob = User.create(name: "Bob")
+# db/seeds.rb
 
-# Create a chat room
-general = ChatRoom.create(name: "General")
+# Create some users
+user1 = User.create!(
+  name: "Alice",
+  email: "alice@example.com",
+  password: "password123"
+)
 
-# Create messages
-Message.create(content: "Hello, everyone!", user: alice, chat_room: general)
-Message.create(content: "Hi Alice!", user: bob, chat_room: general)
+user2 = User.create!(
+  name: "Bob",
+  email: "bob@example.com",
+  password: "password123"
+)
+
+# Create some chat rooms
+chat_room1 = ChatRoom.create!(
+  name: "General",
+  user: user1 # Assuming chat rooms belong to a user
+)
+
+chat_room2 = ChatRoom.create!(
+  name: "Hot Takes",
+  user: user2
+)
+
+# Create some messages
+Message.create!(
+  content: "Hello from Alice",
+  user: user1,
+  chat_room: chat_room1
+)
+
+Message.create!(
+  content: "Hello from Bob",
+  user: user2,
+  chat_room: chat_room2
+)
