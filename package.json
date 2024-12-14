@@ -20,5 +20,10 @@
   "homepage": "https://github.com/billychorey/chat_app#readme",
   "devDependencies": {
     "esbuild": "^0.18.10"
+  },
+  "dependencies": {
+    "@rails/ujs": "^7.1.3-4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }

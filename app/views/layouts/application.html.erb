@@ -11,10 +11,11 @@
 
   <body data-logged-in="<%= logged_in? %>">
     <header>
-      <div id="nav-root" data-logged-in="<%= logged_in? %>"></div>
     </header>
     <main>
       <%= yield %>
+      <div id="react-root">"test"</div>
+
     </main>
     <footer>
       <p>&copy; <%= Date.today.year %> Chat App</p>
